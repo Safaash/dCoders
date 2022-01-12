@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block homeactive %}active{% endblock homeactive %}
+{% block title %}home{% endblock title %}
+{% block body %}
+{% load static %}
+
+
+<div class="container-fluid p-0 m-0">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{%static 'img/10.jfif'%}" class="d-block w-100"
+                    alt="..." />
+            </div>
+            <div class="carousel-item">
+                <img src="{%static 'img/7.jfif'%}" class="d-block w-100 " alt="..." />
+            </div>
+            <div class="carousel-item">
+                <img src="{%static 'img/8.jfif'%}" class="d-block w-100 "
+                    alt="..." />
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+<div class="container my-4 ">
+    <h2 class="text-capitalize text-center pb-3 fw-bold">Why choose us?</h2>
+    <div class="row text-center pb-5">
+        
+            <div class="col-md-4 px-auto">
+                <div class=" text-center" style="width: 18rem;"  >
+                    <img src="{%static 'img/d6.jfif'%}" class="rounded"
+                        alt="...">
+                        
+                    <div class="card-body">
+                        <h5 class="card-title">Best Coding Articles</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <a href="#" class="btn btn-outline-danger btn-sm">Read More...</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 ">
+                <div class="text-center" style="width: 18rem;">
+                    <img src="{%static 'img/d4.jfif'%}" class="rounded"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Free Courses</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <a href="#" class="btn btn-outline-danger btn-sm">Read More...</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 " >
+                <div class="text-center" style="width: 18rem;">
+                    <img src="{%static 'img/d5.jfif'%}" class="rounded"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Amazing Services</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <a href="#" class="btn btn-outline-danger btn-sm">Read More...</a>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+<footer class="bg-dark position-relative fixed-bottom  text-light text-center py-3">
+    Copyright &copy; OceanCoders
+  </footer>
+
+{% endblock body %}

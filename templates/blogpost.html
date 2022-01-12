@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block blogactive %}active{% endblock blogactive %}"
+{% block body %}
+
+{% block css %}
+<style>
+  .container {
+    min-height: 100vh;
+  }
+</style>
+{% endblock css %}
+ <div class="container pt-3 ">
+     
+     <div class="media mx-5">
+       
+        <div class="media-body my-3 mx-5" >
+          <h5 class="mt-0 text-capitalize">{{blog.title}}</h5>
+          <p>{{blog.contents|safe}}</p>
+        </div>
+        
+    </div> 
+</div> 
+
+<footer class="bg-dark position-relative fixed-bottom text-light text-center py-3">
+  Copyright &copy; OceanCoders
+</footer>
+{% endblock body %}

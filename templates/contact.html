@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block contactactive %}active{% endblock contactactive %}
+{% block title %}contact{% endblock title %}
+{% block body %}
+<div class="container">
+ <div class="container-lg py-3">
+   <h3 class="text-center">Contact Us</h3>
+ </div>
+ <form action="/contact/" method="post" class="row g-3">
+   {% csrf_token %}
+  <div class="col-md-12">
+    <label for="inputPassword4" class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" id="inputPassword4">
+  </div>
+  <div class="col-md-12">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email"name="email" class="form-control" id="inputEmail4">
+  </div>
+  <div class="col-md-12">
+    <label for="inputEmail4" class="form-label">Phone Number</label>
+    <input type="tel"name="phone" class="form-control" id="inputEmail4">
+  </div>
+  
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">How May I help you?</label>
+    <textarea rows=5 name="message" class="form-control" id="inputAddress" ></textarea>
+  </div>
+ 
+  
+ 
+  <div class="col-12">
+    <button type="submit" class="btn btn-outline-danger">Submit</button>
+  </div>
+</form>
+
+
+
+
+<footer class="bg-dark position-absolute fixed-bottom text-light text-center py-3">
+    Copyright &copy; OceanCoders
+  </footer>
+{% endblock body %}
