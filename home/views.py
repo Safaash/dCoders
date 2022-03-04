@@ -1,36 +1,20 @@
-from django.shortcuts import render,HttpResponse
+from django.http import Http404, HttpResponse
+from django.shortcuts import render,redirect
 from home.models import Blog,Contact
-import math
+from django.core.paginator import Paginator
+from django.contrib import messages
+from django.db.models import Q
 #  Create your views here.
 def home(request):
     return render(request,'home.html')
 
 def blog(request):
-    blog_no=3
+    blogs=Blog.objects.all().order_by('-time')
+    paginator = Paginator(blogs, 3 )# Show 3 blogs per page.
     page_number = request.GET.get('page')
-    if page_number is None:
-        page_number=1
-    else:
-        page_number=int(page_number)
-
-    blogs=Blog.objects.all()
-    no_of_blogs=len(blogs)
-    blogs=blogs[(page_number-1)*blog_no:(page_number*blog_no)]
-
-    if page_number>1:
-        prev=page_number-1
-    else:
-        prev=None
-
-
-    if page_number<math.ceil(no_of_blogs/blog_no):
-        next=page_number+1
-    else:
-        next=None
-    context={'blogs':blogs,'prev':prev,"next":next}
+    page_obj = paginator.get_page(page_number)
+    context={'blogs':page_obj}
     return render(request, 'blog.html',context)
-
-
 
 def contact(request):
     return render(request,'contact.html')
@@ -41,8 +25,27 @@ def blogpost(request,slug):
     return render(request,'blogpost.html',context)
      
 def search(request):
-    return render(request,'search.html')
+    
+    keyword= request.GET['keyword']
+    blog=Blog.objects.all().filter(Q(title__icontains = keyword) | Q(contents__icontains = keyword)).order_by('-time')
+    blog_count=blog.count()
+    if blog:
+        
+        blog_count=blog.count()
+        context={
+            'blog':blog,
+            'blog_count':blog_count
+            }
+        return render(request,'search.html',context)
+    else:
+        context={
+            
+            'blog_count':blog_count
+            }
+        return render(request,'search.html',context)
 
+            
+    
 
 def contact(request):
     if request.method=='POST':
@@ -52,6 +55,6 @@ def contact(request):
         desc=request.POST["message"]
         ins=Contact(name=name,email=email,phone=phone,desc=desc)
         ins.save()
-        print("sucess")
+        messages.success(request,'Message Sent Successfully!!!')
         
     return render(request,'contact.html')
