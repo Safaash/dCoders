@@ -12,19 +12,21 @@
 
 <div class="container pt-3">
   {% for blog in blogs %}
-  <div class="media mx-5">
-    <div class="media-body my-3 mx-5">
-
-
+  
+    <div class="media-body my-3 ">
       <h5 class="mt-0 text-capitalize"><a class="text-dark text-decoration-none" href="/blogpost/{{blog.slug}}">
-          {{blog.title}}</a></h5>
-      <p>{{blog.shorts|slice:500 }}...</p>
-    </div>
-    <a class="text-dark mx-5" href="/blogpost/{{blog.slug}}"> <button class="btn btn-outline-danger btn-sm">Read
+          {{blog.title}}</a></h5><small class="text-muted">{{blog.time}}</small>
+           <p>{{blog.shorts|slice:500 }}...</p>
+        <a class="text-dark " href="/blogpost/{{blog.slug}}"> <button class="btn btn-outline-danger btn-sm">Read
         More...</button></a>
-
   </div>
   {% endfor %}
+
+
+
+  
+    
+       
   
 
 <div class="my-3">

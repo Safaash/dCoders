@@ -25,24 +25,26 @@ def blogpost(request,slug):
     return render(request,'blogpost.html',context)
      
 def search(request):
-    
-    keyword= request.GET['keyword']
-    blog=Blog.objects.all().filter(Q(title__icontains = keyword) | Q(contents__icontains = keyword)).order_by('-time')
-    blog_count=blog.count()
-    if blog:
-        
+    if request.method=='POST':
+        keyword= request.POST['keyword']
+        blog=Blog.objects.all().filter(Q(title__icontains = keyword) | Q(contents__icontains = keyword)).order_by('-time')
         blog_count=blog.count()
-        context={
+        if blog:
+        
+            blog_count=blog.count()
+            context={
             'blog':blog,
             'blog_count':blog_count
             }
-        return render(request,'search.html',context)
-    else:
-        context={
+            return render(request,'search.html',context)
+        else:
+            context={
             
             'blog_count':blog_count
             }
-        return render(request,'search.html',context)
+            return render(request,'search.html',context)
+    else:
+        return redirect('blog')
 
             
     

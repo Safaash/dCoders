@@ -13,8 +13,9 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">dCoders</a>
+        <div class="container-fluid mx-5">
+          <a class="navbar-brand" href="/"><b><i>dCoders</i></b>
+           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -31,11 +32,13 @@
               </li>
             
             </ul>
-            <form action='/search/' method='get' class="d-flex">
+            
+            <form action='/search/' method='post' class="d-flex">
               {% csrf_token %}
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
               <button class="btn btn-danger" type="submit">Search</button>
             </form>
+           
           </div>
         </div>
       </nav>
